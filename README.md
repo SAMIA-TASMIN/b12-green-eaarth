@@ -163,7 +163,7 @@ Clicking a tree name on a card opens a modal with full tree details.
 
 
 ## 🔗 Submission
-- **Live Link :** YOUR_DEPLOYED_URL_HERE  
-- **GitHub Private Repository:** YOUR_REPO_URL_HERE  
+- **Live Link :** https://samia-tasmin.github.io/b12-green-eaarth/ 
+- **GitHub Private Repository:** https://github.com/SAMIA-TASMIN/b12-green-eaarth **
 
 ---
