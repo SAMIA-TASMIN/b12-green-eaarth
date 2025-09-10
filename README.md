@@ -164,6 +164,7 @@ Clicking a tree name on a card opens a modal with full tree details.
 
 ## 🔗 Submission
 - **Live Link :** https://samia-tasmin.github.io/b12-green-eaarth/ 
+- **Netlify Live Link :** glittering-halva-c685d3.netlify.app
 - **GitHub Private Repository:** https://github.com/SAMIA-TASMIN/b12-green-eaarth **
 
 ---
