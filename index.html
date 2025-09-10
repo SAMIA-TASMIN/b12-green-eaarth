@@ -14,9 +14,9 @@
     <nav class="flex bg-green-700 items-center justify-around h-[70px] mx-auto text-white">
         <div class="text-center justify-center">🌱 Green Earth</div>
         <div class="list-none flex text-center justify-center gap-4">
-            <li><a href="">About</a></li>
-            <li><a href="">Gallery</a></li>
-            <li><a href="">Plant a Tree</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#trees">Plant a Tree</a></li>
         </div>
         <button class="bg-yellow-400 text-center justify-center rounded-3xl h-[43px] w-[130px] text-green-700 font-medium">Plant a Tree</button>
     </nav>
@@ -25,7 +25,7 @@
      <section class="flex flex-col justify-between content-center mx-auto bg-[#cff0dc] h-auto md:flex-row  md:h-[300px] ">
         <img src="./assets/hero-leaf1.png" alt="">
         <div class="flex flex-col justify-center items-center content-center">
-            <h1 class="text-5xl font-bold text-center">
+            <h1 class="text-4xl font-bold text-center">
                 Plant a Tree, Grow a Future
             </h1>
             <p class="text-center text-base font-normal md:mt-4">Join our mission to plant 1 million trees and make the Earth greener for future
@@ -40,24 +40,53 @@
 
      <!-- About Section -->
     <section class="bg-[#f0fdf4] md:p-[50px]">
-        <h2 class="text-center font-semibold text-3xl md:mb-6">Choose Your Trees</h2>
-        <div>
-            
+
+        <!-- Trees section -->
+        <h2 id="trees" class="text-center font-semibold text-3xl md:mb-6">Choose Your Trees</h2>
+        <div class="container mx-auto p-6">
+    <!-- Title -->
+    <h1 class="text-2xl font-bold text-center mb-6">Choose Your Trees</h1>
+
+    <div class="grid grid-cols-12 gap-6">
+      <!-- Categories -->
+      <div class="col-span-3">
+        <h2 class="text-lg font-semibold mb-4">Categories</h2>
+        <div id="categories" class="flex flex-col gap-2"></div>
+      </div>
+
+      <!-- Plants -->
+      <div class="col-span-6">
+        <div id="loading" class="hidden text-center py-10">
+          <span class="loading loading-spinner loading-lg"></span>
         </div>
-        <h2 class="text-center font-semibold text-3xl md:mb-6">About the Campaign</h2>
+        <div id="plants-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+      </div>
+
+      <!-- Cart -->
+      <div class="col-span-3">
+        <div class="bg-white shadow p-4 rounded-xl">
+          <h2 class="text-lg font-semibold mb-4">Your Cart</h2>
+          <div id="cart-items" class="flex flex-col gap-2"></div>
+          <hr class="my-3"/>
+          <p class="font-semibold flex justify-between">Total: <span id="cart-total">৳0</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+        <!-- About -->
+        <h2 id="about" class="text-center font-semibold text-3xl md:mb-6">About the Campaign</h2>
         <div class="flex flex-col md:flex-row justify-center gap-4 items-center">
             <img class="md:w-[400px] h-[400px]" src="./assets/about.png" alt="">
             <div>
                 <p class="text-left text-base font-normal">Green Earth is a global tree plantation initiative dedicated to fighting <br> climate change. Since our start, we’ve planted over 500,000 trees <br> worldwide. By joining our campaign, you help restore forests, create <br> habitats for wildlife, and combat global warming.</p>
-                <div class="ml-6">
+                <ul class="list-disc ml-6">
                 <li>Restoration of natural habitats</li>
                 <li>Improvement of air quality</li>
                 <li>Support for local communities</li>
-                </div>
-                
+                </ul>                
             </div>
         </div>
-
     </section>
 
     <!-- Our Impact Section -->
@@ -65,7 +94,7 @@
     <section class="md:h-[250px] mx-auto bg-[#cff0dc]">
         <h2 class="text-center font-semibold text-3xl md:mb-6 md:pt-[50px]">Our Impact</h2>
         <div class="flex flex-col justify-center items-center pb-2 gap-2 md:gap-10 md:flex-row">
-            <div class="h-[80px] w-[200px] bg-white rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]">
+            <div class="h-[80px] w-[200px]  bg-white rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]">
                 <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">500K+</h2>
                 <p class="text-center text-base font-normal">Trees Planted</p>
             </div>
@@ -118,5 +147,142 @@
             <p class="text-center text-base font-normal text-white pt-4">© 2025 Green Earth. All Rights Reserved.</p>
         </div>
     </footer>
+
+      <!-- Modal -->
+    <div id="plant-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-xl shadow-lg max-w-lg w-full p-6 relative">
+      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600">&times;</button>
+      <img id="modal-image" src="" alt="" class="w-full h-48 object-cover rounded-md mb-4">
+      <h2 id="modal-name" class="text-xl font-bold mb-2"></h2>
+      <p id="modal-description" class="text-gray-600 mb-2"></p>
+      <p id="modal-category" class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded text-sm"></p>
+      <p id="modal-price" class="font-semibold mt-3"></p>
+        </div>
+    </div>
+
+
+
+      <!-- Script -->
+       <script>
+    const categoriesEl = document.getElementById("categories");
+    const plantsContainer = document.getElementById("plants-container");
+    const loadingEl = document.getElementById("loading");
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+
+    let cart = [];
+
+    // Load Categories
+    async function loadCategories() {
+      const res = await fetch("https://openapi.programming-hero.com/api/categories");
+      const data = await res.json();
+      displayCategories(data.categories);
+    }
+
+    function displayCategories(categories) {
+      categoriesEl.innerHTML = "";
+      categories.forEach((cat, idx) => {
+        const btn = document.createElement("button");
+        btn.textContent = cat.category;
+        btn.className = "text-left px-3 py-2 rounded hover:bg-green-200";
+        if (idx === 0) btn.classList.add("bg-green-600", "text-white");
+        btn.onclick = () => {
+          document.querySelectorAll("#categories button").forEach(b => b.classList.remove("bg-green-600","text-white"));
+          btn.classList.add("bg-green-600","text-white");
+          loadPlantsByCategory(cat.id);
+        };
+        categoriesEl.appendChild(btn);
+      });
+    }
+
+    // Load All Plants
+    async function loadAllPlants() {
+      loadingEl.classList.remove("hidden");
+      plantsContainer.innerHTML = "";
+      const res = await fetch("https://openapi.programming-hero.com/api/plants");
+      const data = await res.json();
+      displayPlants(data.plants);
+    }
+
+    // Load Plants by Category
+    async function loadPlantsByCategory(id) {
+      loadingEl.classList.remove("hidden");
+      plantsContainer.innerHTML = "";
+      const res = await fetch(`https://openapi.programming-hero.com/api/category/${id}`);
+      const data = await res.json();
+      displayPlants(data.data);
+    }
+
+    // Display Plants
+    function displayPlants(plants) {
+      loadingEl.classList.add("hidden");
+      plantsContainer.innerHTML = "";
+      plants.forEach(plant => {
+        const card = document.createElement("div");
+        card.className = "bg-white shadow rounded-xl p-3 flex flex-col";
+        card.innerHTML = `
+          <img src="${plant.image}" alt="${plant.name}" class="h-32 w-full object-cover rounded-md mb-2">
+          <h3 class="font-bold cursor-pointer text-lg hover:text-green-600" onclick="openModal(${plant.id})">${plant.name}</h3>
+          <p class="text-sm text-gray-600 mb-2">${plant.description.slice(0,60)}...</p>
+          <span class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded text-xs">${plant.category}</span>
+          <p class="mt-2 font-semibold">৳${plant.price}</p>
+          <button onclick="addToCart(${plant.id}, '${plant.name}', ${plant.price})" class="mt-auto bg-green-600 text-white rounded-lg py-2 hover:bg-green-700">Add to Cart</button>
+        `;
+        plantsContainer.appendChild(card);
+      });
+    }
+
+    // Modal
+    async function openModal(id) {
+      const res = await fetch(`https://openapi.programming-hero.com/api/plant/${id}`);
+      const data = await res.json();
+      const plant = data.plant;
+
+      document.getElementById("modal-image").src = plant.image;
+      document.getElementById("modal-name").textContent = plant.name;
+      document.getElementById("modal-description").textContent = plant.description;
+      document.getElementById("modal-category").textContent = plant.category;
+      document.getElementById("modal-price").textContent = `৳${plant.price}`;
+      
+      document.getElementById("plant-modal").classList.remove("hidden");
+      document.getElementById("plant-modal").classList.add("flex");
+    }
+
+    function closeModal() {
+      document.getElementById("plant-modal").classList.add("hidden");
+      document.getElementById("plant-modal").classList.remove("flex");
+    }
+
+    // Cart
+    function addToCart(id, name, price) {
+      cart.push({ id, name, price });
+      renderCart();
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      cartItemsEl.innerHTML = "";
+      cart.forEach((item, idx) => {
+        const div = document.createElement("div");
+        div.className = "flex justify-between items-center bg-green-50 px-2 py-1 rounded";
+        div.innerHTML = `
+          <span>${item.name} - ৳${item.price}</span>
+          <button onclick="removeFromCart(${idx})" class="text-red-500 font-bold">&times;</button>
+        `;
+        cartItemsEl.appendChild(div);
+      });
+      const total = cart.reduce((sum, item) => sum + item.price, 0);
+      cartTotalEl.textContent = "৳" + total;
+    }
+
+    // Init
+    loadCategories();
+    loadAllPlants();
+       </script>
+
 </body>
 </html>

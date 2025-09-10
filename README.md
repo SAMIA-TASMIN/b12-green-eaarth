@@ -94,6 +94,15 @@ https://openapi.programming-hero.com/api/plant/1
 #### 4) How does destructuring assignment work in ES6?
 
 #### 5) Explain template literals in ES6. How are they different from string concatenation?
+<!--
+  ==============================
+  1) var/let/const – var is function-scoped and hoisted with undefined; let/const are block-scoped; const must be assigned once (the binding is immutable, not the value for objects).
+  2) map/forEach/filter – map returns a new array of transformed values; forEach iterates for side-effects and returns undefined; filter returns a new array of elements that pass a test.
+  3) Arrow functions – concise function syntax that lexical-binds this/arguments; cannot be used as constructors and have no prototype.
+  4) Destructuring – unpack values from arrays/objects into distinct variables using pattern matching on the left-hand side.
+  5) Template literals – backtick strings supporting ${} expressions and multiline text; avoid verbose concatenation with + and make interpolation safer/readable.
+  ==============================
+  -->
 
 ## ⚙️ Functionalities 
 
