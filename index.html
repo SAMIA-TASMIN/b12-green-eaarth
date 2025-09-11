@@ -42,23 +42,23 @@
     <section class="bg-[#f0fdf4] md:p-[50px]">
 
         <!-- Trees section -->
-        <div class="container mx-auto p-6">
+        <div class="container mx-auto p-4">
     <!-- Title -->
     <h1 id="trees" class="text-3xl font-semibold text-center mb-6">Choose Your Trees</h1>
 
-    <div class="grid grid-cols-12 gap-4">
+    <div class="grid grid-cols-14 gap-3">
       <!-- Categories -->
-      <div class="col-span-2">
+      <div class="col-span-3">
         <h2 class="text-lg font-semibold mb-4">Categories</h2>
         <div id="categories" class="flex flex-col gap-2"></div>
       </div>
 
       <!-- Plants -->
-      <div class="col-span-7">
+      <div class="col-span-8">
         <div id="loading" class="hidden text-center py-10">
           <span class="loading loading-spinner loading-lg"></span>
         </div>
-        <div id="plants-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        <div id="plants-container" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
       </div>
 
       <!-- Cart -->
@@ -225,7 +225,7 @@
           <p class="text-sm text-gray-600 mb-2">${plant.description.slice(0,60)}...</p>
           <span class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded text-xs">${plant.category}</span>
           <p class="mt-2 font-semibold">৳${plant.price}</p>
-          <button onclick="addToCart(${plant.id}, '${plant.name}', ${plant.price})" class="mt-auto bg-green-600 text-white rounded-lg py-2 hover:bg-green-700">Add to Cart</button>
+          <button onclick="addToCart(${plant.id}, '${plant.name}', ${plant.price})" class="mt-auto bg-green-600 rounded-lg py-2 hover:bg-green-700">Add to Cart</button>
         `;
         plantsContainer.appendChild(card);
       });
