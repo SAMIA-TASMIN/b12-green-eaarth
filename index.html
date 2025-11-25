@@ -1,291 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Green Earth</title>
-    <link rel="stylesheet" href="styles/style.css">
-</head>
-<body class="inter-inter">
-
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body class="inter-inter">
     <!-- Navigation Section -->
-    <nav class="flex bg-green-700 items-center justify-around h-[70px] mx-auto text-white">
-        <div class="text-center justify-center">🌱 Green Earth</div>
-        <div class="list-none flex text-center justify-center gap-4">
-            <li><a href="#about">About</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#trees">Plant a Tree</a></li>
-        </div>
-        <button class="bg-yellow-400 text-center justify-center rounded-3xl h-[43px] w-[130px] text-green-700 font-medium">Plant a Tree</button>
+    <nav
+      class="flex bg-green-700 items-center justify-around h-[70px] mx-auto text-white"
+    >
+      <div class="text-center justify-center">🌱 Green Earth</div>
+      <div class="list-none flex text-center justify-center gap-4">
+        <li><a href="#about">About</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#trees">Plant a Tree</a></li>
+      </div>
+      <button
+        class="bg-yellow-400 text-center justify-center rounded-3xl h-[43px] w-[130px] text-green-700 font-medium"
+      >
+        Plant a Tree
+      </button>
     </nav>
 
     <!-- Banner section -->
-     <section class="flex flex-col justify-between content-center mx-auto bg-[#cff0dc] h-auto md:flex-row  md:h-[300px] ">
-        <img src="./assets/hero-leaf1.png" alt="">
-        <div class="flex flex-col justify-center items-center content-center">
-            <h1 class="text-3xl font-bold text-center">
-                Plant a Tree, Grow a Future
-            </h1>
-            <p class="text-center text-base font-normal md:mt-4">Join our mission to plant 1 million trees and make the Earth greener for future
-                generations.
-            </p>
-            <div class="flex justify-center md:mt-6">
-                <button class="bg-yellow-400 text-center rounded-3xl h-[43px] w-[130px] text-green-700 font-medium">Get Involved</button>
-            </div>
+    <section
+      class="flex flex-col justify-between content-center mx-auto bg-[#cff0dc] h-auto md:flex-row md:h-[300px]"
+    >
+      <img src="./assets/hero-leaf1.png" alt="" />
+      <div class="flex flex-col justify-center items-center content-center">
+        <h1 class="text-4xl font-bold text-center">
+          Plant a Tree, Grow a Future
+        </h1>
+        <p class="text-center text-base font-normal md:mt-4">
+          Join our mission to plant 1 million trees and make the Earth greener
+          for future generations.
+        </p>
+        <div class="flex justify-center md:mt-6">
+          <button
+            class="bg-yellow-400 text-center rounded-3xl h-[43px] w-[130px] text-green-700 font-medium"
+          >
+            Get Involved
+          </button>
         </div>
-        <img src="./assets/hero-leaf2.png" alt="">
-     </section>
+      </div>
+      <img src="./assets/hero-leaf2.png" alt="" />
+    </section>
 
-     <!-- About Section -->
+    <!-- About Section -->
+  
+
     <section class="bg-[#f0fdf4] md:p-[50px]">
+      <!-- Trees section -->
+      <div class="container mx-auto p-4">
 
-        <!-- Trees section -->
-        <div class="container mx-auto p-4">
-    <!-- Title -->
-    <h1 id="trees" class="text-3xl font-semibold text-center mb-6">Choose Your Trees</h1>
+        <!-- looader -->
+        <div id="spinner" class="flex justify-center items-center my-3 hidden">
 
-    <div class="grid grid-cols-14 gap-3">
-      <!-- Categories -->
-      <div class="col-span-3">
-        <h2 class="text-lg font-semibold mb-4">Categories</h2>
-        <div id="categories" class="flex flex-col gap-2"></div>
-      </div>
-
-      <!-- Plants -->
-      <div class="col-span-8">
-        <div id="loading" class="hidden text-center py-10">
-          <span class="loading loading-spinner loading-lg"></span>
+          <span class="loading loading-bars loading-xl"></span>
         </div>
-        <div id="plants-container" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
-      </div>
+        <!-- Title -->
+        <h1 id="trees" class="text-3xl font-semibold text-center mb-6">
+          Choose Your Trees
+        </h1>
 
-      <!-- Cart -->
-      <div class="col-span-3">
-        <div class="bg-white shadow p-4 rounded-xl">
-          <h2 class="text-lg font-semibold mb-4">Your Cart</h2>
-          <div id="cart-items" class="flex flex-col gap-2"></div>
-          <hr class="my-3"/>
-          <p class="font-semibold flex justify-between">Total: <span id="cart-total">৳0</span></p>
-        </div>
-      </div>
-    </div>
-  </div>
+      
 
-        <!-- About -->
-        <h2 id="about" class="text-center font-semibold text-3xl md:mb-6">About the Campaign</h2>
-        <div class="flex flex-col md:flex-row justify-center gap-4 items-center">
-            <img class="md:w-[400px] h-[400px]" src="./assets/about.png" alt="">
-            <div>
-                <p class="text-left text-base font-normal">Green Earth is a global tree plantation initiative dedicated to fighting <br> climate change. Since our start, we’ve planted over 500,000 trees <br> worldwide. By joining our campaign, you help restore forests, create <br> habitats for wildlife, and combat global warming.</p>
-                <ul class="list-disc ml-6">
-                <li>Restoration of natural habitats</li>
-                <li>Improvement of air quality</li>
-                <li>Support for local communities</li>
-                </ul>                
+        <!-- Layout -->
+        <section id="dataContainer" class="md:flex md:flex-row gap-5">
+          <!-- Left Sidebar -->
+          <aside class="w-2/12">
+            <h3 class="text-lg font-semibold mb-4">Categories</h3>
+            <ul id="categories" class="flex flex-col gap-2"></ul>
+          </aside>
+
+          <!-- Main Content -->
+          <main
+            id="tree-container"
+            class="md:w-8/12 md:grid md:grid-cols-3 gap-4 transition-all"
+          ></main>
+
+          <!-- Cart Sidebar -->
+          <aside class="md:w-3/12">
+            <div class="bg-white p-4 rounded-xl shadow">
+              <h3 class="text-lg font-semibold mb-3">Your Cart</h3>
+              <div
+                id="cart-items"
+                class="flex flex-col gap-2 min-h-[80px] text-sm"
+              ></div>
+              <hr class="my-3" />
+              <p class="font-semibold flex justify-between">
+                Total: <span id="cart-total">৳0</span>
+              </p>
+              <button
+                id="checkout"
+                class="mt-3 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
+              >
+                Checkout
+              </button>
             </div>
+          </aside>
+        </section>
+      </div>
+
+      <!-- About -->
+      <h2 id="about" class="text-center font-semibold text-3xl md:mb-6">
+        About the Campaign
+      </h2>
+      <div class="flex flex-col md:flex-row justify-center gap-4 items-center">
+        <img class="md:w-[400px] h-[400px]" src="./assets/about.png" alt="" />
+        <div>
+          <p class="text-left text-base font-normal">
+            Green Earth is a global tree plantation initiative dedicated to
+            fighting <br />
+            climate change. Since our start, we’ve planted over 500,000 trees
+            <br />
+            worldwide. By joining our campaign, you help restore forests, create
+            <br />
+            habitats for wildlife, and combat global warming.
+          </p>
+          <ul class="list-disc ml-6">
+            <li>Restoration of natural habitats</li>
+            <li>Improvement of air quality</li>
+            <li>Support for local communities</li>
+          </ul>
         </div>
+      </div>
     </section>
 
     <!-- Our Impact Section -->
 
     <section class="md:h-[250px] mx-auto bg-[#cff0dc]">
-        <h2 class="text-center font-semibold text-3xl md:mb-6 md:pt-[50px]">Our Impact</h2>
-        <div class="flex flex-col justify-center items-center pb-2 gap-2 md:gap-10 md:flex-row">
-            <div class="h-[80px] w-[200px]  bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]">
-                <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">500K+</h2>
-                <p class="text-center text-base font-normal">Trees Planted</p>
-            </div>
-            <div class="h-[80px] w-[200px] bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]">
-                <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">120+</h2>
-                <p class="text-center text-base font-normal">Communities Involved</p>
-            </div>
-            <div class="h-[80px] w-[200px] bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]">
-                <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">30+</h2>
-                <p class="text-center text-base font-normal">Countries Reached</p>
-            </div>
+      <h2 class="text-center font-semibold text-3xl md:mb-6 md:pt-[50px]">
+        Our Impact
+      </h2>
+      <div
+        class="flex flex-col justify-center items-center pb-2 gap-2 md:gap-10 md:flex-row"
+      >
+        <div
+          class="h-[80px] w-[200px] bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]"
+        >
+          <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">
+            500K+
+          </h2>
+          <p class="text-center text-base font-normal">Trees Planted</p>
         </div>
-
+        <div
+          class="h-[80px] w-[200px] bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]"
+        >
+          <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">
+            120+
+          </h2>
+          <p class="text-center text-base font-normal">Communities Involved</p>
+        </div>
+        <div
+          class="h-[80px] w-[200px] bg-white hover:bg-[#A5C0B0] rounded-xl shadow-[0_1px_2px_0_rgba(0,0,0,0.06)]"
+        >
+          <h2 class="text-center font-semibold text-3xl text-green-700 pt-2">
+            30+
+          </h2>
+          <p class="text-center text-base font-normal">Countries Reached</p>
+        </div>
+      </div>
     </section>
 
     <!-- Footer Setction -->
 
     <footer>
-        <div class="bg-[#166534] h-[450px]">
-            <h2 class="text-center font-semibold text-3xl text-white pt-[50px] mb-6">Plant a Tree Today</h2>
-            <div class="flex justify-center">
-                <form class="space-y-4 bg-[#15803d] rounded-xl h-auto p-4 md:h-[280px] w-[650px]">
-    
-      <input 
-        type="text" 
-        placeholder="Your Name"
-        class="md:w-[600px] p-3 rounded-md bg-white focus:outline-none"
-      >
-      <input 
-        type="email" 
-        placeholder="Your Email Address"
-        class="md:w-[600px] p-3 bg-white rounded-md border border-gray-300 focus:outline-none"
-      >
-      <select 
-        class="md:w-[600px] p-3 bg-white rounded-md border border-gray-300 focus:outline-none"
-      >
-        <option>Number of Trees</option>
-        <option value="1">1</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="25">25</option>
-      </select>
+      <div class="bg-[#166534] h-[450px]">
+        <h2
+          class="text-center font-semibold text-3xl text-green-700 text-white pt-[50px] mb-6"
+        >
+          Plant a Tree Today
+        </h2>
+        <div class="flex justify-center">
+          <form
+            id="donation-form"
+            class="space-y-4 bg-[#15803d] rounded-xl h-auto p-4 md:h-[280px] w-[650px]"
+          >
+            <input
+              type="text"
+              placeholder="Your Name"
+              class="md:w-[600px] p-3 rounded-md bg-white focus:outline-none"
+            />
+            <input
+              type="email"
+              placeholder="Your Email Address"
+              class="md:w-[600px] p-3 bg-white rounded-md border border-gray-300 focus:outline-none"
+            />
+            <select
+              class="md:w-[600px] p-3 bg-white rounded-md border border-gray-300 focus:outline-none"
+            >
+              <option>Number of Trees</option>
+              <option value="1">1 Tree-$5</option>
+              <option value="5">5 Trees-$25</option>
+              <option value="10">10 Trees-$50</option>
+            </select>
 
-      <button 
-        type="submit"
-        class="md:w-[600px] bg-[#facc15] text-green-900 font-semibold py-3 rounded-full transition"
-      >
-        Donate Now
-      </button>
-            </form>
-            </div>
+            <button
+              type="submit"
+              class="md:w-[600px] bg-[#facc15] text-green-900 font-semibold py-3 rounded-full transition"
+            >
+              Donate Now
+            </button>
+          </form>
         </div>
-        <div class="bg-[#14532D] h-[50px]">
-            <p class="text-center text-base font-normal text-white pt-4">© 2025 Green Earth. All Rights Reserved.</p>
-        </div>
+      </div>
+      <div class="bg-[#14532D] h-[50px]">
+        <p class="text-center text-base font-normal text-white pt-4">
+          © 2025 Green Earth. All Rights Reserved.
+        </p>
+      </div>
     </footer>
 
-      <!-- Modal -->
-    <div id="plant-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
-        <div class="bg-white rounded-xl shadow-lg max-w-lg w-full p-6 relative">
-      <button onclick="closeModal()" class="absolute top-2 right-2 text-gray-600">&times;</button>
-      <img id="modal-image" src="" alt="" class="w-full h-48 object-cover rounded-md mb-4">
-      <h2 id="modal-name" class="text-xl font-bold mb-2"></h2>
-      <p id="modal-description" class="text-gray-600 mb-2"></p>
-      <p id="modal-category" class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded text-sm"></p>
-      <p id="modal-price" class="font-semibold mt-3"></p>
-        </div>
+    <!-- Modal -->
+
+<dialog id="my_modal_5" class="modal modal-bottom  md:modal-middle mx-auto   ">
+  <div class="modal-box">
+    <div id="modalBody">
+
+
     </div>
+    <div class="modal-action">
+      <form method="dialog">
+        
+        <button class="btn ml-2 mb-2">Close</button>
+      </form>
+    </div>
+  </div>
+</dialog>
 
 
-
-      <!-- Script -->
-       <script>
-    const categoriesEl = document.getElementById("categories");
-    const plantsContainer = document.getElementById("plants-container");
-    const loadingEl = document.getElementById("loading");
-    const cartItemsEl = document.getElementById("cart-items");
-    const cartTotalEl = document.getElementById("cart-total");
-
-    let cart = [];
-
-    // Load Categories
-    async function loadCategories() {
-      const res = await fetch("https://openapi.programming-hero.com/api/categories");
-      const data = await res.json();
-      displayCategories(data.categories);
-    }
-
-    function displayCategories(categories) {
-      categoriesEl.innerHTML = "";
-      categories.forEach((cat, idx) => {
-        const btn = document.createElement("button");
-        btn.textContent = cat.category;
-        btn.className = "text-left px-3 py-2 rounded hover:bg-green-200";
-        if (idx === 0) btn.classList.add("bg-green-600", "text-white");
-        btn.onclick = () => {
-          document.querySelectorAll("#categories button").forEach(b => b.classList.remove("bg-green-600","text-white"));
-          btn.classList.add("bg-green-600","text-white");
-          loadPlantsByCategory(cat.id);
-        };
-        categoriesEl.appendChild(btn);
-      });
-    }
-
-    // Load All Plants
-    async function loadAllPlants() {
-      loadingEl.classList.remove("hidden");
-      plantsContainer.innerHTML = "";
-      const res = await fetch("https://openapi.programming-hero.com/api/plants");
-      const data = await res.json();
-      displayPlants(data.plants);
-    }
-
-    // Load Plants by Category
-    async function loadPlantsByCategory(id) {
-      loadingEl.classList.remove("hidden");
-      plantsContainer.innerHTML = "";
-      const res = await fetch(`https://openapi.programming-hero.com/api/category/${id}`);
-      const data = await res.json();
-      displayPlants(data.data);
-    }
-
-    // Display Plants
-    function displayPlants(plants) {
-      loadingEl.classList.add("hidden");
-      plantsContainer.innerHTML = "";
-      plants.forEach(plant => {
-        const card = document.createElement("div");
-        card.className = "bg-white shadow rounded-xl p-3 flex flex-col";
-        card.innerHTML = `
-          <img src="${plant.image}" alt="${plant.name}" class="h-32 w-full object-cover rounded-md mb-2">
-          <h3 class="font-bold cursor-pointer text-lg hover:text-green-600" onclick="openModal(${plant.id})">${plant.name}</h3>
-          <p class="text-sm text-gray-600 mb-2">${plant.description.slice(0,60)}...</p>
-          <span class="inline-block bg-green-100 text-green-700 px-2 py-1 rounded text-xs">${plant.category}</span>
-          <p class="mt-2 font-semibold">৳${plant.price}</p>
-          <button onclick="addToCart(${plant.id}, '${plant.name}', ${plant.price})" class="mt-auto bg-green-600 rounded-lg py-2 hover:bg-green-700">Add to Cart</button>
-        `;
-        plantsContainer.appendChild(card);
-      });
-    }
-
-    // Modal
-    async function openModal(id) {
-      const res = await fetch(`https://openapi.programming-hero.com/api/plant/${id}`);
-      const data = await res.json();
-      const plant = data.plant;
-
-      document.getElementById("modal-image").src = plant.image;
-      document.getElementById("modal-name").textContent = plant.name;
-      document.getElementById("modal-description").textContent = plant.description;
-      document.getElementById("modal-category").textContent = plant.category;
-      document.getElementById("modal-price").textContent = `৳${plant.price}`;
-      
-      document.getElementById("plant-modal").classList.remove("hidden");
-      document.getElementById("plant-modal").classList.add("flex");
-    }
-
-    function closeModal() {
-      document.getElementById("plant-modal").classList.add("hidden");
-      document.getElementById("plant-modal").classList.remove("flex");
-    }
-
-    // Cart
-    function addToCart(id, name, price) {
-      cart.push({ id, name, price });
-      renderCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      renderCart();
-    }
-
-    function renderCart() {
-      cartItemsEl.innerHTML = "";
-      cart.forEach((item, idx) => {
-        const div = document.createElement("div");
-        div.className = "flex justify-between items-center bg-green-50 px-2 py-1 rounded";
-        div.innerHTML = `
-          <span>${item.name} - ৳${item.price}</span>
-          <button onclick="removeFromCart(${idx})" class="text-red-500 font-bold">&times;</button>
-        `;
-        cartItemsEl.appendChild(div);
-      });
-      const total = cart.reduce((sum, item) => sum + item.price, 0);
-      cartTotalEl.textContent = "৳" + total;
-    }
-
-    // Init
-    loadCategories();
-    loadAllPlants();
-       </script>
-
-</body>
+    <!-- Script -->
+   
+    <script src="./index.js"></script>
+  </body>
 </html>
